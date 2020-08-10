@@ -1,64 +1,74 @@
-<h1 class = "text-center mt-3 mb-3">Eat-Da-Burger!</h1>
-
-<div class= "text-center">
-    <img class = "rounded border border-secondary" src="assets/img/burger.png" alt="Burger">
+<div class="header-bar">
+  <div class="header-background">
+    <div class="header">
+      <h1>Burger Quest!</h1>
+    </div>
+    <div class="header">
+      <h3>The quest to devour the finest burgers in the land</h3>
+    </div>
+  </div>
 </div>
 
-
-<div class = "row my-4 justify-content-center">
-    
-    <div class = "col-5 mr-5 text-center border border-secondary" style="background-color:rgb(255, 247, 175);">
-        <h2 class = "my-3">Burgers On the Menu!</h2>
-
-        <ul>
-          {{#each burgers}}
-          {{#unless devoured}}
-          {{> burgers/burger-block devoured=true}}
-          {{/unless}}
-          {{/each}}     
-        </ul>
-    </div>
-
-    <div class = "col-5 text-center border border-secondary" style="background-color:rgb(255, 247, 175);">
-        <h2 class= "my-3">Eaten Burgers!</h2>
-    
-        <ul>
-          {{#each burgers}}
-          {{#if devoured}}
-          {{> burgers/burger-block devoured=false}}
-          {{/if}}
-          {{/each}}
-        </ul>
-    </div>
-
+<div class="crest-box row d-flex justify-content-center">
+  <div class="col-4 d-flex justify-content-center">
+    <img class="crest" src="/assets/burgerquestcrest.png" alt="burger-quest-crest">
+  </div>
 </div>
 
-<div class = "row justify-content-center">
-    <div class = "col-4 text-center border border-secondary mb-5" style="background-color:rgb(255, 247, 175);">
-        <h2>Add a Burger</h2>
-        <form class="create-form">
+<hr class="buffer-top">
 
-        <div class="form-group">
-            <label for="ca">Burger Name:</label>
-            <input type="text" id="ca" name="burger_name">
-        </div>
-
-        <div class="form-group">
-            <label for="devoured">Eat Now?</label><br>
-            <input type="radio" name="devoured" value="1" checked> Devour it!<br>
-            <input type="radio" name="devoured" value="0"> Eat Later.
-        </div>
-
-        <button class = "mb-3" type="submit">Add New Burger</button>
-        </form>
+<div class="container list-background">
+  <div class="row head-room">
+    <div class="col-6 d-flex justify-content-center cent-text">
+      <h2>Burgers to Devour!</h2>
     </div>
-    <li>
-	{{burger_name}}
+    <div class="col-6 d-flex justify-content-center cent-text">
+      <h2>Devoured Burgers!</h2>
+    </div>
+  </div>
 
-	{{#if devoured}}
-		<button class="change-devoured" data-id="{{id}}" data-newdevoured="{{devoured}}">DEVOUR</button>
-	{{/if}}
+  <div class="row">
+    <div class="col-6 d-flex justify-content-center">
+      <ul>
+        {{#each burgers}}
+        {{#unless devoured}}
+        {{> burgers/burger-block devoured=true }}
+        {{/unless}}
+        {{/each}}
+      </ul>
+    </div>
 
-	<button class="delete-burger" data-id="{{this.id}}">DELETE</button>
-</li>
+    <div class="col-6 d-flex justify-content-center">
+      <ul>
+        {{#each burgers}}
+        {{#if devoured}}
+        <li>
+          {{burger_name}}
+        </li>
+        {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<hr class="buffer">
+
+<div class="row d-flex justify-content-center">
+  <div class="col-6 d-flex justify-content-center cent-text">
+    <h2>Add To The Menu</h2>
+  </div>
+</div>
+
+<div class="row d-flex justify-content-center">
+  <form class="create-form">
+
+    <div class="form-group">
+      <label for="burg">New Burger:</label>
+      <input type="text" id="burg" name="burger_name">
+    </div>
+    <div class="row d-flex justify-content-center">
+      <button type="submit">Embark</button>
+    </div>
+  </form>
 </div>
